@@ -1,0 +1,68 @@
+{
+  "name": "iqs-bundles-history-node",
+  "version": "1.0.0",
+  "author": "Conceptual Vision Consulting LLC",
+  "description": "Microservice for deploying iqs history microservices",
+  "contributors": [
+    "Sergey Seroukhov <seroukhov@gmail.com>"
+  ],
+  "main": "./obj/src/index.js",
+  "typings": "./obj/src/index.d.ts",
+  "keywords": [
+    "iqs.services",
+    "microservice"
+  ],
+  "noAnalyze": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:iquipsys-positron/iqs-bundles-history-node.git"
+  },
+  "license": "SEE LICENSE IN LICENCE.md",
+  "engines": {
+    "node": ">=0.6.14"
+  },
+  "private": false,
+  "scripts": {
+    "start": "node app",
+    "test": "mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
+    "benchmark": "matcha -R clean -I tdd ./benchmark/run.js"
+  },
+  "dependencies": {
+    "pip-services3-commons-node": "^3.0.0",
+    "pip-services3-components-node": "^3.0.0",
+    "pip-services3-container-node": "^3.0.0",
+    "pip-services3-data-node": "^3.0.0",
+    "pip-services3-aws-node": "^3.0.0",
+    "pip-services3-rpc-node": "^3.0.0",
+    "pip-services3-mongodb-node": "^3.0.0",
+    "iqs-clients-opevents-node": "^1.0.0",
+    "pip-clients-transducerdata-node": "^1.0.0",
+    "pip-clients-positions-node": "^1.0.0",
+    "iqs-clients-objectstates-node": "^1.0.0",
+    "iqs-clients-attendance-node": "^1.0.0",
+    "pip-clients-routes-node": "^1.0.0",
+    "iqs-clients-statistics-node": "^1.0.0",
+    "pip-clients-statistics-node": "^1.0.0",
+    "iqs-services-opevents-node": "^1.0.0",
+    "pip-services-transducerdata-node": "^1.0.0",
+    "pip-services-positions-node": "^1.0.0",
+    "iqs-services-objectstates-node": "^1.0.0",
+    "pip-services-routes-node": "^1.0.0",
+    "iqs-services-attendance-node": "^1.0.0",
+    "pip-services-clusters-node": "^1.0.0",
+    "iqs-services-agreements-node": "^1.0.0",
+    "iqs-services-dataprofiles-node": "^1.0.0",
+    "iqs-services-deviceprofiles-node": "^1.0.0",
+    "pip-services-statistics-node": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "@types/lodash": "^4.0.0",
+    "@types/async": "^2.0.0",
+    "@types/mocha": "*",
+    "@types/chai": "*",
+    "mocha": "*",
+    "chai": "*",
+    "restify": "4.3.4"
+  }
+}

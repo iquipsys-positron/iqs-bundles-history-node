@@ -1,0 +1,113 @@
+---
+# Container descriptor
+- descriptor: "pip-services:context-info:default:default:1.0"
+  name: "iqs-bundles-history-node"
+  description: "Microservice for deploying iqs history microservices"
+
+# Console logger
+- descriptor: "pip-services:logger:console:default:1.0"
+  level: "trace"
+
+# Performance counters that posts values to log
+- descriptor: "pip-services:counters:log:default:1.0"
+  level: "trace"
+
+# AWS logging component
+- descriptor: "pip-services:logger:cloudwatch:default:1.0"
+  level: "info"
+  group: "{{ENV_NAME}}"
+  connection:
+    region: "{{{AWS_REGION}}}"
+  credential:
+    access_id: "{{{AWS_ACCESS_ID}}}"
+    access_key: "{{{AWS_ACCESS_KEY}}}"
+
+# AWS metrics component
+- descriptor: "pip-services:counters:cloudwatch:default:1.0"
+  level: "info"
+  connection:
+    region: "{{{AWS_REGION}}}"
+  credential:
+    access_id: "{{{AWS_ACCESS_ID}}}"
+    access_key: "{{{AWS_ACCESS_KEY}}}"
+
+# Common HTTP endpoint
+- descriptor: "pip-services:endpoint:http:default:1.0"
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8080
+
+# Heartbeat service
+- descriptor: "pip-services:heartbeat-service:http:default:1.0"
+
+# Status service
+- descriptor: "pip-services:status-service:http:default:1.0"
+
+# Discovery service
+- descriptor: "pip-services:discovery:memory:default:*"
+  mongodb: "uri={{{MONGO_SERVICE_URI}}};host={{{MONGO_SERVICE_HOST}}};port={{{MONGO_SERVICE_PORT}}};database={{{MONGO_DB}}}"
+
+# Credential store
+- descriptor: "pip-services:credential-store:memory:default:*"
+  mongodb: "username={{{MONGO_USER}}};password={{{MONGO_PASS}}}"
+
+############## Pip.Services ##############
+
+# Statistics components
+- descriptor: "pip-services-statistics:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "pip-services-statistics:controller:default:default:*"
+- descriptor: "pip-services-statistics:client:direct:default:*"
+- descriptor: "pip-services-statistics:service:http:default:*"
+
+############## iQs components ##############
+
+# Operational events components
+- descriptor: "iqs-services-opevents:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-opevents:controller:default:default:*"
+- descriptor: "iqs-services-opevents:client:direct:default:*"
+- descriptor: "iqs-services-opevents:service:http:default:*"
+
+# Object data components
+- descriptor: "pip-services-transducerdata:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "pip-services-transducerdata:controller:default:default:*"
+- descriptor: "pip-services-transducerdata:client:direct:default:*"
+- descriptor: "pip-services-transducerdata:service:http:default:*"
+
+# Object positions components
+- descriptor: "iqs-services-objectpositions:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-objectpositions:controller:default:default:*"
+- descriptor: "iqs-services-objectpositions:client:direct:default:*"
+- descriptor: "iqs-services-objectpositions:service:http:default:*"
+
+# Object states components
+- descriptor: "iqs-services-objectstates:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-objectstates:controller:default:default:*"
+- descriptor: "iqs-services-objectstates:client:direct:default:*"
+- descriptor: "iqs-services-objectstates:service:http:default:*"
+
+# Object routes components
+- descriptor: "iqs-services-objectroutes:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-objectroutes:controller:default:default:*"
+- descriptor: "iqs-services-objectroutes:client:direct:default:*"
+- descriptor: "iqs-services-objectroutes:service:http:default:*"
+
+# Attendance components
+- descriptor: "iqs-services-attendance:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-attendance:controller:default:default:*"
+- descriptor: "iqs-services-attendance:client:direct:default:*"
+- descriptor: "iqs-services-attendance:service:http:default:*"
